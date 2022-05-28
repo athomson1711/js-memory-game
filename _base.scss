@@ -44,12 +44,46 @@ header{
     align-items: center;
     justify-items: center;
     gap: 5% 1%;
+    perspective: 800px;
 }  
 
-.card{
+.card, .card-front, .card-back{
     border: 2px solid black;
-    text-align: center;
-    padding: 50% 0 50%;
+    border-radius: 5px;
     height: 100%;
-    width: 100%;
+    width: 100%; 
+} 
+
+.card{
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1s ease;
+    box-shadow: (0,0,0,0.5) 0px 5px 10px;
+    
 }
+
+.card-front, 
+.card-back{
+    position: absolute;
+    pointer-events: none;
+}
+
+.card-front{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bolder;
+    padding: 50% 0 50%;
+    transform: rotateY(180deg);
+    background-color:chartreuse;
+}
+.card-back{
+    background-color: grey;
+    backface-visibility: hidden;
+}
+
+.toggle-card{
+    transform: rotateY(180deg);
+    pointer-events: none;
+    transition-delay: 10ms;
+}
+

@@ -68,13 +68,54 @@ header {
           align-items: center;
   justify-items: center;
   gap: 5% 1%;
+  -webkit-perspective: 800px;
+          perspective: 800px;
+}
+
+.card, .card-front, .card-back {
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
 }
 
 .card {
-  border: 2px solid black;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+  -webkit-box-shadow: 0, 0, 0, 0.5 0px 5px 10px;
+          box-shadow: 0, 0, 0, 0.5 0px 5px 10px;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  pointer-events: none;
+}
+
+.card-front {
   text-align: center;
+  font-size: 28px;
+  font-weight: bolder;
   padding: 50% 0 50%;
-  height: 100%;
-  width: 100%;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background-color: chartreuse;
+}
+
+.card-back {
+  background-color: grey;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.toggle-card {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  pointer-events: none;
+  -webkit-transition-delay: 10ms;
+          transition-delay: 10ms;
 }
 /*# sourceMappingURL=styles.css.map */
