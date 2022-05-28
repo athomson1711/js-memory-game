@@ -2,34 +2,56 @@ const newGameBtn = document.querySelector(".new-game-btn");
 // const playArea = document.querySelector(".play-area");
 const cardContainer = document.querySelector(".card-container")
 const showCard = true
-// Card Number Array
-const cardNumbers = [1,1,2,2,3,3,4,4,5,5]
 
-// Variables
+// Card Number Array
+const cardNumbers = [1,2,3,4,5]
+
+
+// ---------VARIABLES---------
 let firstGuess = 0
 let secondGuess = 0
+let counter = 0
 
+// ---------FUNCTIONS---------
+
+// Randomise Array
+const randomCardGenerator = (cardNumbers => {
+    let randomCards = []
+    for (let i = 0; i < 2; i++){
+        let numberOfCardsToReturn = cardNumbers.length;
+        for (let i = 0; i < numberOfCardsToReturn; i++){
+            let newCard = cardNumbers[Math.floor(Math.random()*cardNumbers.length)]
+            randomCards.push(newCard) 
+        }
+    
+    }console.log(randomCards)  
+    return randomCards;
+    
+})
 // Function to start new game and layout cards
 
+
+
 // newGameBtn.addEventListener("click", (event) => {
-        const dealCards = cardNumbers.map((number,i) => {
+        randomCardGenerator(cardNumbers).map((number,i) => {
         const cardNumberId = i+1
         // console.log(i)
         const playCard = document.createElement("p");        
         playCard.innerText = number;
         playCard.setAttribute("class", "card")
-        playCard.setAttribute("id", `${cardNumberId}`);
+        // playCard.setAttribute("id", `${cardNumberId}`);
         cardContainer.appendChild(playCard);  
+
     })
 // })
 
-// CHECKS "NEW GAME" BUTTON WORKS
-newGameBtn.addEventListener("click", (event) => {
-   console.log("New Game Button Clicked")
-})
-
-// Find the cards in the DOM - declare here or before they're called?
+// Find the cards in the DOM - declare here or after they're called?
 const cards = document.querySelectorAll("p")
+
+// CHECKS "NEW GAME" BUTTON WORKS
+// newGameBtn.addEventListener("click", (event) => {
+//    console.log("New Game Button Clicked")
+// })
 
 // function to check if pair value matches when called
 
