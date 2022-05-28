@@ -21,7 +21,7 @@ header {
   color: darkblue;
 }
 
-.header-buttons {
+.header-btns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
