@@ -55,17 +55,17 @@ const cards = document.querySelectorAll("p")
 
 // function to check if pair value matches when called
 
-// const checkIfMatchFound = ((firstGuess),(secondGuess) => {
-//     if (firstGuess === secondGuess){
-//         console.log("They match!")
-//         firstGuess = 0
-//         secondGuess = 0
-//     } else if (firstGuess != secondGuess){
-//         console.log("They don't match! Try again!")
-//         firstGuess = 0
-//         secondGuess = 0
-//     }
-// })
+const checkIfMatchFound = (guess1,guess2) => {
+    if (guess1 === guess2){
+        console.log("They match!")
+        firstGuess = 0
+        secondGuess = 0
+    } else if (guess1 != guess2){
+        console.log("They don't match! Try again!")
+        firstGuess = 0
+        secondGuess = 0
+    }
+}
 
 // Function to get value of matching pairs
 cards.forEach(card => {
@@ -75,22 +75,22 @@ cards.forEach(card => {
             firstGuess = event.target.innerHTML
         } else if (firstGuess > 0 && secondGuess === 0){
             secondGuess = event.target.innerHTML
-            // checkIfMatchFound(firstGuess,secondGuess)
-            if (firstGuess === secondGuess){ 
-                // console.log(`First Guess:${firstGuess}`)
-                // console.log(`Second Guess:${secondGuess}`)
-                console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
-                console.log("They match!")
-                firstGuess = 0
-                secondGuess = 0
-              } else if(firstGuess != secondGuess){
-                // console.log(`First Guess:${firstGuess}`)
-                // console.log(`Second Guess:${secondGuess}`)
-                console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
-                console.log("They dont match! Try Again!")
-                firstGuess = 0
-                secondGuess = 0
-                }   
+            checkIfMatchFound(firstGuess,secondGuess)
+            // if (firstGuess === secondGuess){ 
+            //     // console.log(`First Guess:${firstGuess}`)
+            //     // console.log(`Second Guess:${secondGuess}`)
+            //     console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
+            //     console.log("They match!")
+            //     firstGuess = 0
+            //     secondGuess = 0
+            //   } else if(firstGuess != secondGuess){
+            //     // console.log(`First Guess:${firstGuess}`)
+            //     // console.log(`Second Guess:${secondGuess}`)
+            //     console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
+            //     console.log("They dont match! Try Again!")
+            //     firstGuess = 0
+            //     secondGuess = 0
+            //     }   
             }
         console.log(`First Guess:${firstGuess}`)
         console.log(`Second Guess:${secondGuess}`)
