@@ -2,8 +2,8 @@ const newGameBtn = document.querySelector(".new-game-btn");
 const cardContainer = document.querySelector(".card-container")
 
 // Card Number Array
-const cardNumbers = [1,2,3,4,5,1,2,3,4,5]
-// console.log(cardNumbers)
+let cardNumbers = [1,2,3,4,5,1,2,3,4,5]
+
 
 
 // ---------VARIABLES---------
@@ -19,14 +19,13 @@ const shuffleCards = () => {
     // how to "duplicate" array?
     // .conact?
     const shuffledCardsArr = cardNumbers;
-    // HOW DOES THIS WORK?!?!?!?!
     shuffledCardsArr.sort(() => Math.random() -0.5)
     // console.log(cards)
     return shuffledCardsArr
 }
 
 const generateCards = () =>{
-    const cardItem = shuffleCards();
+    const cardItem = shuffleCards(cardNumbers);
     // console.log(cardItem)
     // Creates HTML elements for each Card in the array
     cardItem.forEach(value => {
@@ -103,7 +102,8 @@ const checkIfMatchFound = (event) => {
             // remove the class flipped
             card.classList.remove("flipped");
             // delay the toggle class being removed so 2nd card clicked gets a chance to be seen by the user
-            setTimeout(() => card.classList.remove("toggle-card"),800)
+            setTimeout(() => card.classList.remove("toggle-card"),1000)
+            // card.classList.remove("toggle-card")
          })    
         } 
     }
@@ -114,98 +114,18 @@ generateCards()
 
 const win = () => {
     alert("YOU WON!")
+    resetGame()
 }
 
 const resetGame = () =>{
-    // WHAT NEEDS TO BE RESET??
-    // Target the cards then delete them by class name?
-    // reset the array?? ie  [1,2,3,4,5,1,2,3,4,5]
     matchedCards = 0
-    generateCards()
+    cardNumbers = [1,2,3,4,5,1,2,3,4,5];
+    const cards = document.querySelectorAll(".card")
+    cards.forEach(card => {
+        setTimeout(() => card.classList.remove("toggle-card"),1000)
+        setTimeout(() => card.remove(),3000)
+    })
+
+    setTimeout(() => generateCards(),3000)
 }
-// console.log(cardNumbers)
-
-// -------------ARCHIVE----------
-// // function to check if pair value matches when called
-
-// const checkIfMatchFound = (guess1,guess2) => {
-//     if (guess1 === guess2){
-//         console.log("They match!")
-//         firstGuess = 0
-//         secondGuess = 0
-//     } else if (guess1 != guess2){
-//         console.log("They don't match! Try again!")
-//         firstGuess = 0
-//         secondGuess = 0
-//     }
-// }
-
-// Function to get value of matching pairs
-// cards.forEach(card => {
-//     card.addEventListener("click", (event) =>{
-//         // console.log(`Card value is ${card.innerHTML}`)
-//         if (firstGuess === 0 && secondGuess === 0){
-//             firstGuess = event.target.innerHTML
-//         } else if (firstGuess > 0 && secondGuess === 0){
-//             secondGuess = event.target.innerHTML
-//             checkIfMatchFound(firstGuess,secondGuess)
-//             if (firstGuess === secondGuess){ 
-//                 // console.log(`First Guess:${firstGuess}`)
-//                 // console.log(`Second Guess:${secondGuess}`)
-//                 console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
-//                 console.log("They match!")
-//                 firstGuess = 0
-//                 secondGuess = 0
-//               } else if(firstGuess != secondGuess){
-//                 // console.log(`First Guess:${firstGuess}`)
-//                 // console.log(`Second Guess:${secondGuess}`)
-//                 console.log(`The First Guest was ${firstGuess} and your Second Guess was ${secondGuess} `)
-//                 console.log("They dont match! Try Again!")
-//                 firstGuess = 0
-//                 secondGuess = 0
-//                 }   
-//             }
-//         console.log(`First Guess:${firstGuess}`)
-//         console.log(`Second Guess:${secondGuess}`)
-//     })
-// })
-
-
-
-
-// Randomise Card Array
-// const randomCardGenerator = (cardNumbers => {
-//     let randomCards = []
-//     for (let i = 0; i < 2; i++){
-//         let numberOfCardsToReturn = cardNumbers.length;
-//         for (let i = 0; i < numberOfCardsToReturn; i++){
-//             let newCard = cardNumbers[Math.floor(Math.random()*cardNumbers.length)]
-//             randomCards.push(newCard) 
-//         }
-    
-//     }console.log(randomCards)  
-//     return randomCards;
-    
-// })
-// // Function to start new game and layout cards
-
-
-   
-// // newGameBtn.addEventListener("click", (event) => {
-//         randomCardGenerator(cardNumbers).map((number,i) => {
-//         const cardNumberId = i+1
-//         // console.log(i)
-//         const playCard = document.createElement("p");        
-//         playCard.innerText = number;
-//         playCard.setAttribute("class", "card")
-//         // playCard.setAttribute("id", `${cardNumberId}`);
-//         cardContainer.appendChild(playCard);  
-
-//     })
-// // })
-
-
-
-
-
 
