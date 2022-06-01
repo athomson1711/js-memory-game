@@ -6,8 +6,8 @@
 }
 
 body {
-  background: #22c1c3;
-  background: radial-gradient(circle, #22c1c3 0%, #fdbb2d 100%);
+  background: #eeaeca;
+  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
 }
 
 header {
@@ -113,10 +113,8 @@ header {
 }
 
 .card-back {
-  background: #f9c80a;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f9c80a), color-stop(33%, #fd1d1d), to(#fcb045));
-  background: linear-gradient(180deg, #f9c80a 0%, #fd1d1d 33%, #fcb045 100%);
-  font-size: 40px;
+  background-color: lightblue;
+  font-size: 50px;
   padding: 30% 0 30%;
   text-align: center;
   font-weight: bolder;
