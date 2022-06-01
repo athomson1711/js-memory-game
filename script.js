@@ -1,5 +1,8 @@
 const newGameBtn = document.querySelector(".new-game-btn");
 const cardContainer = document.querySelector(".card-container")
+const matchedCardsTotal = document.querySelector(".matched-cards-total")
+
+
 
 
 // Card Number Array
@@ -21,6 +24,7 @@ let fruitCards = [
 
 // ---------VARIABLES---------
 let matchedCards  = 0
+matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
 // ---------FUNCTIONS---------
 
 // Randomise cardNumber Array elements
@@ -29,6 +33,8 @@ const shuffleCards = () => {
     shuffledCardsArr.sort(() => Math.random() -0.5)
     return shuffledCardsArr
 }
+
+
 
 const generateCards = () =>{
     const cardItem = shuffleCards(fruitCards);
@@ -74,10 +80,10 @@ const checkIfMatchFound = (event) => {
         // NEED TO DEACTIVATE POINTER EVENTS SO CAN"T CLICK ON OTHER CARDS UNTIL NON-MATCHED PAIR RESET
         // CHeck to see if either of the two flipped cards values match
         if (flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")) { 
-            // console.log("correct!")
             // If they match update the number of matched cards,
             matchedCards++
-            pairsFoundCountermatchedCardsTotal(matchedCards)
+            matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
+            // pairsFoundCountermatchedCardsTotal(matchedCards)
             // remove the .flipped class and prevent the cards from being clicked on
             flippedCards.forEach(card =>{
                 card.classList.remove("flipped");
@@ -96,6 +102,7 @@ const checkIfMatchFound = (event) => {
             // remove the class flipped
             card.classList.remove("flipped");
             // delay the toggle class being removed so 2nd card clicked gets a chance to be seen by the user
+            matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
             setTimeout(() => card.classList.remove("toggle-card"),1000)
             // card.classList.remove("toggle-card")
          })    
@@ -103,15 +110,19 @@ const checkIfMatchFound = (event) => {
     }
 
 }
-const pairsFoundCountermatchedCardsTotal = (counter) => {
-    matchedCards = counter
-    const matchedCardsTotal = document.querySelector(".matched-cards-total")
-    return matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
-}
+// const pairsFoundCountermatchedCardsTotal = (counter) => {
+//     matchedCards = counter
+//     const matchedCardsTotal = document.querySelector(".matched-cards-total")
+//     if (matchedCards === fruitCards.length/2){
+//         return matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
+
+//     }
+        
+// }
 
 // Run generate cards when page loads
 generateCards()
-pairsFoundCountermatchedCardsTotal(matchedCards)
+// pairsFoundCountermatchedCardsTotal(matchedCards)
 
 const win = () => {
     alert("Well Done! Play again?")
@@ -120,7 +131,6 @@ const win = () => {
 
 const resetGame = () =>{
     matchedCards = 0
-    cardNumbers = [1,2,3,4,5,1,2,3,4,5];
     fruitCards = [
         {imgSrc: "./Images/Apple.jpg", name: "Apple"},
         {imgSrc: "./Images/Grape.jpg", name: "Grape"},
@@ -142,4 +152,7 @@ const resetGame = () =>{
     })
 
     setTimeout(() => generateCards(),3000)
+    setTimeout(() => matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`,500)
+    // matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
+    // setTimeout(() => pairsFoundCountermatchedCardsTotal(matchedCards),3000)
 }
