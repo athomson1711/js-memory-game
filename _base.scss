@@ -5,9 +5,6 @@
 }
 
 body{
-    // background-color: antiquewhite;
-    // background: rgb(34,193,195);
-    // background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -17,43 +14,49 @@ body{
     text-align: center;
     align-items: center;
     justify-content: center;
-    height: 10vh;
+    height: 10%;
     width: 100%;
     background-color: transparent;
     color: darkblue;
+
+    @media only screen and (max-width:500px){
+        margin: 5px;
+    }
 
 
     h1{
         margin: 10px;
+
+        @media only screen and (max-width:500px){
+            margin: 5px;
+            font-size: 21px;
+        }
     }
 
     p{
         margin: 10px;
+        
     }
-}
 
-.header-btns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5vh;
-    width: 100%;
-    background-color: transparent;
-    color: darkblue;
+    @media only screen and (max-width:500px){
+        margin: 5px;
+        font-size: 18px
+        ;
+    }
 }
 
 .play-area{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 90%;
     width: 100%;
 }
 
 .card-container{
     margin: 10px;
     padding: 10px;
-    width: 100;
+    width: auto;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 8rem);
@@ -62,15 +65,38 @@ body{
     justify-items: center;
     align-content: center;
     justify-content: center;
-    gap: 5% 1%;
+    gap: 4rem 4rem;
     perspective: 800px;
+
+    @media only screen and (max-width:750px){
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 2rem 2rem;
+    }
+
+    @media only screen and (max-width:500px){
+        grid-template-columns: repeat(4, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 2rem 2rem;
+    }
+
+    @media only screen and (max-width:425px){
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(4, 60px);
+        gap: 3rem 3rem;
+     }
 }  
 
 .card, .card-front, .card-back{
-    
     border-radius: 5px;
     height: 100%;
     width: 100%; 
+
+    @media only screen and (max-width:500px){
+       height: 100%;
+       width: 100%;
+    }
+
 } 
 
 .card{
@@ -91,15 +117,15 @@ body{
     text-align: center;
     font-size: 23px;
     font-weight: bolder;
-    // padding: 40% 0 40%;
+    padding: auto;
     transform: rotateY(180deg);
     background-color:white;
+
+    @media only screen and (max-width:500px){
+        font-size: 18px;
+     }
 }
 .card-back{
-    // background: rgb(238,174,202);
-    // background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    // background: rgb(249,200,10);
-    // background: linear-gradient(180deg, rgba(249,200,10,1) 0%, rgba(253,29,29,1) 33%, rgba(252,176,69,1) 100%);
     border: 2px solid whitesmoke;
     background-color: lightblue;
     font-size: 50px;
@@ -108,7 +134,22 @@ body{
     font-weight: bolder;
     color: whitesmoke;
     backface-visibility: hidden;
+
+    @media only screen and (max-width:750px){
+        font-size: 35px;
+        font-weight: bold;
+    }
+    @media only screen and (max-width:500px){
+        font-size: 25px;
+        font-weight: bold;
+     }
+
+     @media only screen and (max-width:425px){
+        font-size: 21px;
+        font-weight: bold;
+     }
 }
+
 
 .toggle-card{
     transform: rotateY(180deg);

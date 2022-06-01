@@ -19,34 +19,38 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 10vh;
+  height: 10%;
   width: 100%;
   background-color: transparent;
   color: darkblue;
+}
+
+@media only screen and (max-width: 500px) {
+  .header {
+    margin: 5px;
+  }
 }
 
 .header h1 {
   margin: 10px;
 }
 
+@media only screen and (max-width: 500px) {
+  .header h1 {
+    margin: 5px;
+    font-size: 21px;
+  }
+}
+
 .header p {
   margin: 10px;
 }
 
-.header-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 5vh;
-  width: 100%;
-  background-color: transparent;
-  color: darkblue;
+@media only screen and (max-width: 500px) {
+  .header {
+    margin: 5px;
+    font-size: 18px;
+  }
 }
 
 .play-area {
@@ -59,14 +63,14 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 90vh;
+  height: 90%;
   width: 100%;
 }
 
 .card-container {
   margin: 10px;
   padding: 10px;
-  width: 100;
+  width: auto;
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -83,15 +87,52 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 5% 1%;
+  gap: 4rem 4rem;
   -webkit-perspective: 800px;
           perspective: 800px;
+}
+
+@media only screen and (max-width: 750px) {
+  .card-container {
+    -ms-grid-columns: (100px)[4];
+        grid-template-columns: repeat(4, 100px);
+    -ms-grid-rows: (100px)[3];
+        grid-template-rows: repeat(3, 100px);
+    gap: 2rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card-container {
+    -ms-grid-columns: (80px)[4];
+        grid-template-columns: repeat(4, 80px);
+    -ms-grid-rows: (80px)[3];
+        grid-template-rows: repeat(3, 80px);
+    gap: 2rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .card-container {
+    -ms-grid-columns: (60px)[3];
+        grid-template-columns: repeat(3, 60px);
+    -ms-grid-rows: (60px)[4];
+        grid-template-rows: repeat(4, 60px);
+    gap: 3rem 3rem;
+  }
 }
 
 .card, .card-front, .card-back {
   border-radius: 5px;
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .card, .card-front, .card-back {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .card {
@@ -114,9 +155,16 @@ body {
   text-align: center;
   font-size: 23px;
   font-weight: bolder;
+  padding: auto;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   background-color: white;
+}
+
+@media only screen and (max-width: 500px) {
+  .card-front {
+    font-size: 18px;
+  }
 }
 
 .card-back {
@@ -129,6 +177,27 @@ body {
   color: whitesmoke;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+}
+
+@media only screen and (max-width: 750px) {
+  .card-back {
+    font-size: 35px;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card-back {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .card-back {
+    font-size: 21px;
+    font-weight: bold;
+  }
 }
 
 .toggle-card {
