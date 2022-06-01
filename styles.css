@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Red Hat Display', sans-serif;
 }
 
 body {
@@ -171,7 +173,7 @@ body {
   border: 2px solid whitesmoke;
   background-color: lightblue;
   font-size: 50px;
-  padding: 30% 0 30%;
+  padding: 25% 0 25%;
   text-align: center;
   font-weight: bolder;
   color: whitesmoke;
