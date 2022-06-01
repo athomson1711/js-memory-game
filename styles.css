@@ -10,10 +10,9 @@ body {
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
 }
 
-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.header {
+  margin: auto;
+  text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -24,6 +23,14 @@ header {
   width: 100%;
   background-color: transparent;
   color: darkblue;
+}
+
+.header h1 {
+  margin: 10px;
+}
+
+.header p {
+  margin: 10px;
 }
 
 .header-btns {
@@ -52,7 +59,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
 }
 
@@ -113,6 +120,7 @@ header {
 }
 
 .card-back {
+  border: 2px solid whitesmoke;
   background-color: lightblue;
   font-size: 50px;
   padding: 30% 0 30%;

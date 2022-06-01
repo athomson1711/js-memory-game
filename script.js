@@ -1,6 +1,7 @@
 const newGameBtn = document.querySelector(".new-game-btn");
 const cardContainer = document.querySelector(".card-container")
 
+
 // Card Number Array
 let cardNumbers = [1,2,3,4,5,1,2,3,4,5]
 let fruitCards = [
@@ -19,57 +20,41 @@ let fruitCards = [
 ]
 
 // ---------VARIABLES---------
-// let firstGuess = 0
-// let secondGuess = 0
-// let counter = 0
-// const showCard = true
 let matchedCards  = 0
 // ---------FUNCTIONS---------
 
 // Randomise cardNumber Array elements
 const shuffleCards = () => {
-    // how to "duplicate" array?
-    // .conact?
-    // const shuffledCardsArr = cardNumbers;
     const shuffledCardsArr = fruitCards;
     shuffledCardsArr.sort(() => Math.random() -0.5)
-    // console.log(cards)
     return shuffledCardsArr
 }
 
 const generateCards = () =>{
     const cardItem = shuffleCards(fruitCards);
-    // console.log(cardItem)
     // Creates HTML elements for each Card in the array
     cardItem.forEach(value => {
         // create a div for the card, it's front face and it's back face
         const card = document.createElement("div")
         const cardFront = document.createElement("img")
         const cardBack = document.createElement("div")
-
         // assign the classes to the card, it's front face and it's back face
         card.classList = "card"
         cardFront.classList = "card-front"
         cardBack.classList = "card-back"
-
-        // Assign the value of the array element to the innter HTML of the card front div
-        // HOW WOULD IT ADD IMG OR value from object key?
+        // Assign the value of the array element to the  of the card front div
         cardFront.src = value.imgSrc
         cardBack.innerHTML = "?"
         card.setAttribute("name", value.name)
         // add the card to the cardContainer div in the HTML
         cardContainer.appendChild(card)
-
         // add the card front and back to the card div in the HTML
         card.appendChild(cardFront)
         card.appendChild(cardBack) 
-
         // add an event listener to the card which when clicked: 
         card.addEventListener("click", (event) =>{
-
             // add class of toggle-card to rotate the card using css class
             card.classList.toggle("toggle-card")
-
             // runs the checkMatch Function
             checkIfMatchFound(event);
         })
@@ -78,26 +63,21 @@ const generateCards = () =>{
 
 // Check if the cards match
 const checkIfMatchFound = (event) => {
-
     // assign the card that was clicked on to the variable flippedCard
     const flippedCard = event.target;
     // add a class of "flipped" to the flipped card
     flippedCard.classList.add("flipped")
     // update the DOM to find the cards with a class of flipped
     const flippedCards = document.querySelectorAll(".flipped");
-
-    // console.log(flippedCard)
-    // console.log(flippedCards)
-
     // If two cards have been flipped:
     if (flippedCards.length === 2){
         // NEED TO DEACTIVATE POINTER EVENTS SO CAN"T CLICK ON OTHER CARDS UNTIL NON-MATCHED PAIR RESET
         // CHeck to see if either of the two flipped cards values match
-         
         if (flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")) { 
             // console.log("correct!")
             // If they match update the number of matched cards,
             matchedCards++
+            pairsFoundCountermatchedCardsTotal(matchedCards)
             // remove the .flipped class and prevent the cards from being clicked on
             flippedCards.forEach(card =>{
                 card.classList.remove("flipped");
@@ -123,11 +103,18 @@ const checkIfMatchFound = (event) => {
     }
 
 }
+const pairsFoundCountermatchedCardsTotal = (counter) => {
+    matchedCards = counter
+    const matchedCardsTotal = document.querySelector(".matched-cards-total")
+    return matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
+}
+
 // Run generate cards when page loads
 generateCards()
+pairsFoundCountermatchedCardsTotal(matchedCards)
 
 const win = () => {
-    alert("YOU WON!")
+    alert("Well Done! Play again?")
     resetGame()
 }
 
@@ -156,4 +143,3 @@ const resetGame = () =>{
 
     setTimeout(() => generateCards(),3000)
 }
-
