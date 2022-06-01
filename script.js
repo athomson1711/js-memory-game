@@ -3,8 +3,20 @@ const cardContainer = document.querySelector(".card-container")
 
 // Card Number Array
 let cardNumbers = [1,2,3,4,5,1,2,3,4,5]
-
-
+let fruitCards = [
+    {imgSrc: "./Images/Apple.jpg", name: "Apple"},
+    {imgSrc: "./Images/Grape.jpg", name: "Grape"},
+    {imgSrc: "./Images/Lemon.jpg", name: "Lemon"},
+    {imgSrc: "./Images/Mango.jpg", name: "Mango"},
+    {imgSrc: "./Images/orange.jpg", name: "Orange"},
+    {imgSrc: "./Images/Strawberry.jpg", name: "Strawberry"},
+    {imgSrc: "./Images/Apple.jpg", name: "Apple"},
+    {imgSrc: "./Images/Grape.jpg", name: "Grape"},
+    {imgSrc: "./Images/Lemon.jpg", name: "Lemon"},
+    {imgSrc: "./Images/Mango.jpg", name: "Mango"},
+    {imgSrc: "./Images/orange.jpg", name: "Orange"},
+    {imgSrc: "./Images/Strawberry.jpg", name: "Strawberry"},
+]
 
 // ---------VARIABLES---------
 // let firstGuess = 0
@@ -18,20 +30,21 @@ let matchedCards  = 0
 const shuffleCards = () => {
     // how to "duplicate" array?
     // .conact?
-    const shuffledCardsArr = cardNumbers;
+    // const shuffledCardsArr = cardNumbers;
+    const shuffledCardsArr = fruitCards;
     shuffledCardsArr.sort(() => Math.random() -0.5)
     // console.log(cards)
     return shuffledCardsArr
 }
 
 const generateCards = () =>{
-    const cardItem = shuffleCards(cardNumbers);
+    const cardItem = shuffleCards(fruitCards);
     // console.log(cardItem)
     // Creates HTML elements for each Card in the array
     cardItem.forEach(value => {
         // create a div for the card, it's front face and it's back face
         const card = document.createElement("div")
-        const cardFront = document.createElement("div")
+        const cardFront = document.createElement("img")
         const cardBack = document.createElement("div")
 
         // assign the classes to the card, it's front face and it's back face
@@ -41,8 +54,9 @@ const generateCards = () =>{
 
         // Assign the value of the array element to the innter HTML of the card front div
         // HOW WOULD IT ADD IMG OR value from object key?
-        cardFront.innerHTML = value;
-
+        cardFront.src = value.imgSrc
+        cardBack.innerHTML = "?"
+        card.setAttribute("name", value.name)
         // add the card to the cardContainer div in the HTML
         cardContainer.appendChild(card)
 
@@ -80,7 +94,7 @@ const checkIfMatchFound = (event) => {
         // NEED TO DEACTIVATE POINTER EVENTS SO CAN"T CLICK ON OTHER CARDS UNTIL NON-MATCHED PAIR RESET
         // CHeck to see if either of the two flipped cards values match
          
-        if (flippedCards[0].innerHTML === flippedCards[1].innerHTML) { 
+        if (flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")) { 
             // console.log("correct!")
             // If they match update the number of matched cards,
             matchedCards++
@@ -90,7 +104,7 @@ const checkIfMatchFound = (event) => {
                 card.style.pointerEvents = "none";
              }) 
             //  Check to see if the number of matched cards is the number of possible pairs in the deck.
-             if (matchedCards === cardNumbers.length/2){
+             if (matchedCards === fruitCards.length/2){
                 // delay running function?
                 // If yes then run the win function to end the game
                 setTimeout(() => win(), 1000)
@@ -120,9 +134,23 @@ const win = () => {
 const resetGame = () =>{
     matchedCards = 0
     cardNumbers = [1,2,3,4,5,1,2,3,4,5];
+    fruitCards = [
+        {imgSrc: "./Images/Apple.jpg", name: "Apple"},
+        {imgSrc: "./Images/Grape.jpg", name: "Grape"},
+        {imgSrc: "./Images/Lemon.jpg", name: "Lemon"},
+        {imgSrc: "./Images/Mango.jpg", name: "Mango"},
+        {imgSrc: "./Images/orange.jpg", name: "Orange"},
+        {imgSrc: "./Images/Strawberry.jpg", name: "Strawberry"},
+        {imgSrc: "./Images/Apple.jpg", name: "Apple"},
+        {imgSrc: "./Images/Grape.jpg", name: "Grape"},
+        {imgSrc: "./Images/Lemon.jpg", name: "Lemon"},
+        {imgSrc: "./Images/Mango.jpg", name: "Mango"},
+        {imgSrc: "./Images/orange.jpg", name: "Orange"},
+        {imgSrc: "./Images/Strawberry.jpg", name: "Strawberry"},
+    ]
     const cards = document.querySelectorAll(".card")
     cards.forEach(card => {
-        setTimeout(() => card.classList.remove("toggle-card"),1000)
+        setTimeout(() => card.classList.remove("toggle-card"),800)
         setTimeout(() => card.remove(),3000)
     })
 
