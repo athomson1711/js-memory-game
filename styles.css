@@ -116,11 +116,11 @@ body {
 
 @media only screen and (max-width: 425px) {
   .card-container {
-    -ms-grid-columns: (60px)[3];
-        grid-template-columns: repeat(3, 60px);
-    -ms-grid-rows: (60px)[4];
-        grid-template-rows: repeat(4, 60px);
-    gap: 3rem 3rem;
+    -ms-grid-columns: (100px)[3];
+        grid-template-columns: repeat(3, 100px);
+    -ms-grid-rows: (100px)[4];
+        grid-template-rows: repeat(4, 100px);
+    gap: 1rem 1rem;
   }
 }
 
@@ -199,6 +199,7 @@ body {
   .card-back {
     font-size: 21px;
     font-weight: bold;
+    padding: 35% 0 25%;
   }
 }
 
