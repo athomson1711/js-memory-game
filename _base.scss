@@ -12,14 +12,24 @@ body{
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
-header{
-    display: flex;
+.header{
+    margin: auto;
+    text-align: center;
     align-items: center;
     justify-content: center;
     height: 10vh;
     width: 100%;
     background-color: transparent;
     color: darkblue;
+
+
+    h1{
+        margin: 10px;
+    }
+
+    p{
+        margin: 10px;
+    }
 }
 
 .header-btns{
@@ -36,7 +46,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -57,7 +67,7 @@ header{
 }  
 
 .card, .card-front, .card-back{
-    // border: 2px solid black;
+    
     border-radius: 5px;
     height: 100%;
     width: 100%; 
@@ -90,6 +100,7 @@ header{
     // background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     // background: rgb(249,200,10);
     // background: linear-gradient(180deg, rgba(249,200,10,1) 0%, rgba(253,29,29,1) 33%, rgba(252,176,69,1) 100%);
+    border: 2px solid whitesmoke;
     background-color: lightblue;
     font-size: 50px;
     padding: 30% 0 30%;
