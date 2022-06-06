@@ -3,10 +3,8 @@ const cardContainer = document.querySelector(".card-container")
 const matchedCardsTotal = document.querySelector(".matched-cards-total")
 
 
-
-
 // Card Number Array
-let cardNumbers = [1,2,3,4,5,1,2,3,4,5]
+// let cardNumbers = [1,2,3,4,5,1,2,3,4,5]
 let fruitCards = [
     {imgSrc: "./Images/Apple.jpg", name: "Apple"},
     {imgSrc: "./Images/Grape.jpg", name: "Grape"},
@@ -33,8 +31,6 @@ const shuffleCards = () => {
     shuffledCardsArr.sort(() => Math.random() -0.5)
     return shuffledCardsArr
 }
-
-
 
 const generateCards = () =>{
     const cardItem = shuffleCards(fruitCards);
@@ -93,7 +89,7 @@ const checkIfMatchFound = (event) => {
              if (matchedCards === fruitCards.length/2){
                 // delay running function?
                 // If yes then run the win function to end the game
-                setTimeout(() => win(), 1000)
+                setTimeout(() => winGame(), 1000)
             } 
         } else{
             // If the flipped card values donn't match then:
@@ -110,21 +106,12 @@ const checkIfMatchFound = (event) => {
     }
 
 }
-// const pairsFoundCountermatchedCardsTotal = (counter) => {
-//     matchedCards = counter
-//     const matchedCardsTotal = document.querySelector(".matched-cards-total")
-//     if (matchedCards === fruitCards.length/2){
-//         return matchedCardsTotal.innerHTML = `Pairs found: ${matchedCards} of ${fruitCards.length/2}`;
-
-//     }
-        
-// }
 
 // Run generate cards when page loads
 generateCards()
 // pairsFoundCountermatchedCardsTotal(matchedCards)
 
-const win = () => {
+const winGame = () => {
     alert("Well Done! Play again?")
     resetGame()
 }

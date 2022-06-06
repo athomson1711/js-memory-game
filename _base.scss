@@ -101,6 +101,7 @@ body{
 } 
 
 .card{
+    cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
     transition: 1s ease;
